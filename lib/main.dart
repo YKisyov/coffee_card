@@ -2,7 +2,7 @@ import 'package:coffee_card/Home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: Sandbox()));
+  runApp(MaterialApp(home: Home()));
 }
 
 class Sandbox extends StatelessWidget {
@@ -16,24 +16,23 @@ class Sandbox extends StatelessWidget {
         title: const Text("S A N D   B O X"),
         backgroundColor: Colors.amber,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: Row(
         children: [
           Container(
-            alignment: Alignment.center,
-            width: 100,
+            // alignment: Alignment.center,
+            height: 100,
             color: Colors.red[300],
-            child: Text("One, One, One, One, One, One, One, One, One.", style: TextStyle(fontSize: 30)),
+            child: Text("One", style: TextStyle(fontSize: 30)),
           ),
           Container(
-            alignment: Alignment.center,
-            width: 200,
+            // alignment: Alignment.center,
+            height: 200,
             color: Colors.green[300],
             child: Text("Two", style: TextStyle(fontSize: 40)),
           ),
           Container(
-            alignment: Alignment.center,
-            width: 300,
+            // alignment: Alignment.center,
+            height: 300,
             color: Colors.blue[300],
             child: Text("Three", style: TextStyle(fontSize: 50)),
           ),
