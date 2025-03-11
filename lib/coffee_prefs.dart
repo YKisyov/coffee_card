@@ -5,25 +5,73 @@ class CoffeePrefs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         Row(
           children: [
-            Text("Strenght: "),
-            Text("3"),
-            SizedBox(width: 50,),
-          
+            const Text("Strenght: "),
+            const Text("3"),
+            SizedBox(width: 3),
+            Image.asset(
+              "assets/img/coffee_bean.png",
+              width: 35,
+              color: Colors.brown[100],
+              colorBlendMode: BlendMode.multiply,
+            ),
+            Expanded(child: SizedBox(width: 50)),
+            FilledButton(
+              onPressed: increaseCoffeeStrength,
+              style: FilledButton.styleFrom(
+                backgroundColor: Colors.brown[200],
+                foregroundColor: Colors.white,
+                ),
+              child: Text(
+                "+",
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 25,
+                ),
+              ),
+            ),
           ],
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text("Sugars: "), 
-            Text("3"), 
-            SizedBox(width: 50),
-            ],
-        )
+            const Text("Sugars: "),
+            const Text("3"),
+            SizedBox(width: 3),
+            Image.asset(
+              "assets/img/sugar_cube.png",
+              width: 35,
+              color: Colors.brown[100],
+              colorBlendMode: BlendMode.multiply,
+            ),
+            Expanded(child: SizedBox(width: 50)),
+            FilledButton(
+              onPressed: increaseCoffeeStrength,
+              style: FilledButton.styleFrom(
+                backgroundColor: Colors.brown[200],
+                foregroundColor: Colors.white,
+                ),
+              child: Text(
+                "+",
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 25,
+                ),
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
+}
+
+void increaseCoffeeStrength() {
+  print("Coffee was Strengthened.");
+}
+
+void increaseSugarStrength() {
+  print("Added more sugar.");
 }
