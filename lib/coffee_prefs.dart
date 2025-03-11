@@ -57,14 +57,7 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
               coffeeStrength, 
               _Assets.coffeBeanImg,
               35.0),
-            
-            
-            // Image.asset(
-            //   "assets/img/coffee_bean.png",
-            //   width: 35,
-            //   color: Colors.brown[100],
-            //   colorBlendMode: BlendMode.multiply,
-            // ),
+
             Expanded(child: SizedBox(width: 50)),
             FilledButton(
               onPressed: increaseCoffeeStrength,
@@ -112,7 +105,7 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
   List<Widget> generateListOfImages(
     int numberOfElements,
     String fullLocalPathOfImageNameAndExtentions,
-    double width,
+    {double width = 35.0,}
   ) {
     List<Widget> resultingRowOfImagees = [];
     for (int i = 0; i < numberOfElements; i++) {
