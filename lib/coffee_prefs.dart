@@ -29,9 +29,6 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
               ? ++coffeeStrength
               : minCoffeeStrenghtAllowance;
     });
-    print(
-      "Strength button was pressed. Value of coffeeStrenght is $coffeeStrength",
-    );
   }
 
   void increaseSugarStrength() {
@@ -52,11 +49,8 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
             const Text("Strenght: "),
             Text("$coffeeStrength"),
             SizedBox(width: 3),
-            
-            ...generateListOfImages(
-              coffeeStrength, 
-              _Assets.coffeBeanImg,
-              35.0),
+
+            ...generateListOfImages(coffeeStrength, _Assets.coffeBeanImg),
 
             Expanded(child: SizedBox(width: 50)),
             FilledButton(
@@ -78,11 +72,7 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
             Text("$prefferedSugar"),
             SizedBox(width: 3),
 
-            ...generateListOfImages(
-              prefferedSugar,
-              _Assets.sugarCubeImg,
-              35.0,
-            ),
+            ...generateListOfImages(prefferedSugar, _Assets.sugarCubeImg),
 
             Expanded(child: SizedBox(width: 50)),
             FilledButton(
@@ -104,9 +94,9 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
 
   List<Widget> generateListOfImages(
     int numberOfElements,
-    String fullLocalPathOfImageNameAndExtentions,
-    {double width = 35.0,}
-  ) {
+    String fullLocalPathOfImageNameAndExtentions, {
+    double width = 35.0,
+  }) {
     List<Widget> resultingRowOfImagees = [];
     for (int i = 0; i < numberOfElements; i++) {
       resultingRowOfImagees.add(
