@@ -34,7 +34,7 @@ class Home extends StatelessWidget {
             child: const CoffeePrefs(),
           ),
           Expanded(
-            child: Image.asset("assets/img/coffee_bg.jpg",
+            child: Image.asset(Assets.coffeeBgImg,
             fit: BoxFit.fitWidth,
             alignment: Alignment.bottomCenter,
             ),

@@ -7,7 +7,7 @@ class CoffeePrefs extends StatefulWidget {
   State<CoffeePrefs> createState() => _CoffeePrefsState();
 }
 
-class _Assets {
+class Assets {
   static const String coffeBeanImg = "assets/img/coffee_bean.png";
   static const String coffeeBgImg = "assets/img/coffee_bg.jpg";
   static const String sugarCubeImg = "assets/img/sugar_cube.png";
@@ -50,7 +50,7 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
             Text("$coffeeStrength"),
             SizedBox(width: 3),
 
-            ...generateListOfImages(coffeeStrength, _Assets.coffeBeanImg),
+            ...generateListOfImages(coffeeStrength, Assets.coffeBeanImg),
 
             Expanded(child: SizedBox(width: 50)),
             FilledButton(
@@ -72,7 +72,7 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
             Text("$prefferedSugar"),
             SizedBox(width: 3),
 
-            ...generateListOfImages(prefferedSugar, _Assets.sugarCubeImg),
+            ...generateListOfImages(prefferedSugar, Assets.sugarCubeImg),
 
             Expanded(child: SizedBox(width: 50)),
             FilledButton(
