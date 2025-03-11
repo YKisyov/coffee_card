@@ -52,12 +52,19 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
             const Text("Strenght: "),
             Text("$coffeeStrength"),
             SizedBox(width: 3),
-            Image.asset(
-              "assets/img/coffee_bean.png",
-              width: 35,
-              color: Colors.brown[100],
-              colorBlendMode: BlendMode.multiply,
-            ),
+            
+            ...generateListOfImages(
+              coffeeStrength, 
+              _Assets.coffeBeanImg,
+              35.0),
+            
+            
+            // Image.asset(
+            //   "assets/img/coffee_bean.png",
+            //   width: 35,
+            //   color: Colors.brown[100],
+            //   colorBlendMode: BlendMode.multiply,
+            // ),
             Expanded(child: SizedBox(width: 50)),
             FilledButton(
               onPressed: increaseCoffeeStrength,
