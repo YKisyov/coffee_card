@@ -1,7 +1,43 @@
 import 'package:flutter/material.dart';
 
-class CoffeePrefs extends StatelessWidget {
+class CoffeePrefs extends StatefulWidget {
   const CoffeePrefs({super.key});
+
+  @override
+  State<CoffeePrefs> createState() => _CoffeePrefsState();
+}
+
+class _CoffeePrefsState extends State<CoffeePrefs> {
+  final minCoffeeStrenghtAllowance = 1;
+  final minSugarAllowance = 0;
+  final maxCoffeeStrenghtAllowance = 5;
+  final maxSugarAllowance = 5;
+
+  
+
+  int coffeeStrength = 1;
+  int prefferedSugar = 1;
+
+  void increaseCoffeeStrength() {
+    setState(() {
+      coffeeStrength =
+          coffeeStrength < maxCoffeeStrenghtAllowance
+              ? ++coffeeStrength
+              : minCoffeeStrenghtAllowance;
+    });
+    print(
+      "Strength button was pressed. Value of coffeeStrenght is $coffeeStrength",
+    );
+  }
+
+  void increaseSugarStrength() {
+    setState(() {
+      prefferedSugar =
+          prefferedSugar < maxSugarAllowance
+              ? ++prefferedSugar
+              : minSugarAllowance;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +46,7 @@ class CoffeePrefs extends StatelessWidget {
         Row(
           children: [
             const Text("Strenght: "),
-            const Text("3"),
+            Text("$coffeeStrength"),
             SizedBox(width: 3),
             Image.asset(
               "assets/img/coffee_bean.png",
@@ -24,13 +60,10 @@ class CoffeePrefs extends StatelessWidget {
               style: FilledButton.styleFrom(
                 backgroundColor: Colors.brown[200],
                 foregroundColor: Colors.white,
-                ),
+              ),
               child: Text(
                 "+",
-                style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                  fontSize: 25,
-                ),
+                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 25),
               ),
             ),
           ],
@@ -38,27 +71,25 @@ class CoffeePrefs extends StatelessWidget {
         Row(
           children: [
             const Text("Sugars: "),
-            const Text("3"),
+            Text("$prefferedSugar"),
             SizedBox(width: 3),
-            Image.asset(
+
+            ...generateListOfImages(
+              prefferedSugar,
               "assets/img/sugar_cube.png",
-              width: 35,
-              color: Colors.brown[100],
-              colorBlendMode: BlendMode.multiply,
+              35.0,
             ),
+
             Expanded(child: SizedBox(width: 50)),
             FilledButton(
-              onPressed: increaseCoffeeStrength,
+              onPressed: increaseSugarStrength,
               style: FilledButton.styleFrom(
                 backgroundColor: Colors.brown[200],
                 foregroundColor: Colors.white,
-                ),
+              ),
               child: Text(
                 "+",
-                style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                  fontSize: 25,
-                ),
+                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 25),
               ),
             ),
           ],
@@ -66,12 +97,23 @@ class CoffeePrefs extends StatelessWidget {
       ],
     );
   }
-}
 
-void increaseCoffeeStrength() {
-  print("Coffee was Strengthened.");
-}
-
-void increaseSugarStrength() {
-  print("Added more sugar.");
+  List<Widget> generateListOfImages(
+    int numberOfElements,
+    String fullLocalPathOfImageNameAndExtentions,
+    double width,
+  ) {
+    List<Widget> resultingRowOfImagees = [];
+    for (int i = 0; i < numberOfElements; i++) {
+      resultingRowOfImagees.add(
+        Image.asset(
+          fullLocalPathOfImageNameAndExtentions,
+          width: width,
+          color: Colors.brown[100],
+          colorBlendMode: BlendMode.multiply,
+        ),
+      );
+    }
+    return resultingRowOfImagees;
+  }
 }
