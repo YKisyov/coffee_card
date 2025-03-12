@@ -5,5 +5,5 @@
     },
     "editor.defaultFormatter": "Dart-Code.flutter",
     "notebook.defaultFormatter": "Dart-Code.flutter",
-    "dart.flutterSdkPath": "~/dev/flutter",
+    "dart.flutterSdkPath": "~/dev/flutter"
 }
