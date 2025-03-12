@@ -1,3 +1,5 @@
+import 'package:coffee_card/styled_body_text.dart';
+import 'package:coffee_card/styled_button.dart';
 import 'package:flutter/material.dart';
 
 class CoffeePrefs extends StatefulWidget {
@@ -8,34 +10,35 @@ class CoffeePrefs extends StatefulWidget {
 }
 
 class Assets {
-  static const String coffeBeanImg = "assets/img/coffee_bean.png";
+  static const String coffeeBeanImg = "assets/img/coffee_bean.png";
   static const String coffeeBgImg = "assets/img/coffee_bg.jpg";
   static const String sugarCubeImg = "assets/img/sugar_cube.png";
 }
 
 class _CoffeePrefsState extends State<CoffeePrefs> {
-  final minCoffeeStrenghtAllowance = 1;
+  final minCoffeeStrengthAllowance = 1;
   final minSugarAllowance = 0;
-  final maxCoffeeStrenghtAllowance = 5;
+  final maxCoffeeStrengthAllowance = 5;
   final maxSugarAllowance = 5;
+  final String noSugarSelected = "No sugar selected.";
 
   int coffeeStrength = 1;
-  int prefferedSugar = 1;
+  int preferredAmountOfSugar = 1;
 
   void increaseCoffeeStrength() {
     setState(() {
       coffeeStrength =
-          coffeeStrength < maxCoffeeStrenghtAllowance
+          coffeeStrength < maxCoffeeStrengthAllowance
               ? ++coffeeStrength
-              : minCoffeeStrenghtAllowance;
+              : minCoffeeStrengthAllowance;
     });
   }
 
   void increaseSugarStrength() {
     setState(() {
-      prefferedSugar =
-          prefferedSugar < maxSugarAllowance
-              ? ++prefferedSugar
+      preferredAmountOfSugar =
+          preferredAmountOfSugar < maxSugarAllowance
+              ? ++preferredAmountOfSugar
               : minSugarAllowance;
     });
   }
@@ -43,49 +46,35 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      spacing: 10,
       children: [
         Row(
           children: [
-            const Text("Strenght: "),
-            Text("$coffeeStrength"),
-            SizedBox(width: 3),
+            const MyStyledBodyText("Strength: "),
+            SizedBox(width: 2),
 
-            ...generateListOfImages(coffeeStrength, Assets.coffeBeanImg),
+            ...generateListOfImages(coffeeStrength, Assets.coffeeBeanImg),
 
             Expanded(child: SizedBox(width: 50)),
-            FilledButton(
-              onPressed: increaseCoffeeStrength,
-              style: FilledButton.styleFrom(
-                backgroundColor: Colors.brown[200],
-                foregroundColor: Colors.white,
-              ),
-              child: Text(
-                "+",
-                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 25),
-              ),
-            ),
+            MyStyledButton(onPressed: increaseCoffeeStrength, 
+              child: Text("+")),
+            
           ],
         ),
         Row(
           children: [
-            const Text("Sugars: "),
-            Text("$prefferedSugar"),
-            SizedBox(width: 3),
+            const MyStyledBodyText("Sugars:  "),
+            SizedBox(width: 8),
 
-            ...generateListOfImages(prefferedSugar, Assets.sugarCubeImg),
+            if (preferredAmountOfSugar == 0)
+              MyStyledBodyText(noSugarSelected)
+            else
+              ...generateListOfImages(preferredAmountOfSugar, Assets.sugarCubeImg),
 
             Expanded(child: SizedBox(width: 50)),
-            FilledButton(
-              onPressed: increaseSugarStrength,
-              style: FilledButton.styleFrom(
-                backgroundColor: Colors.brown[200],
-                foregroundColor: Colors.white,
-              ),
-              child: Text(
-                "+",
-                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 25),
-              ),
-            ),
+            
+            MyStyledButton(onPressed: increaseSugarStrength,
+              child: Text("+")),
           ],
         ),
       ],
@@ -94,20 +83,20 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
 
   List<Widget> generateListOfImages(
     int numberOfElements,
-    String fullLocalPathOfImageNameAndExtentions, {
-    double width = 35.0,
+    String fullLocalPathOfImageNameAndExtensions, {
+    double width = 30.0,
   }) {
-    List<Widget> resultingRowOfImagees = [];
+    List<Widget> resultingListOfImages = [];
     for (int i = 0; i < numberOfElements; i++) {
-      resultingRowOfImagees.add(
+      resultingListOfImages.add(
         Image.asset(
-          fullLocalPathOfImageNameAndExtentions,
+          fullLocalPathOfImageNameAndExtensions,
           width: width,
           color: Colors.brown[100],
           colorBlendMode: BlendMode.multiply,
         ),
       );
     }
-    return resultingRowOfImagees;
+    return resultingListOfImages;
   }
 }

@@ -2,7 +2,6 @@ import 'package:coffee_card/Home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  print("Tesst");
   runApp(MaterialApp(home: Home()));
 }
 
