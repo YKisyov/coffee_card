@@ -1,0 +1,9 @@
+{
+  "app_bar_title": "Your very own coffee card ID",
+  "card_question": "How do you like your coffee???",
+  "strength": "Strength",
+  "sugars": "Sugars",
+  "milk": "Milk",
+  "no_sugar_selected": "No sugars selected.",
+  "no_milk_selected": "No milk was selected."
+}
