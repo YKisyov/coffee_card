@@ -37,8 +37,8 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
   final int maxCoffeeStrengthAllowance = 5;
   final int maxSugarAllowance = 5;
   static const bool initialMilkSelection = false;
-  final String noSugarSelected = "No sugar selected.";
-  final String noMilkSelected = "No Milk selected.";
+  //final String noSugarSelected = "No sugar selected.";
+  //final String noMilkSelected = "No Milk selected.";
 
   int coffeeStrength = 1;
   int preferredAmountOfSugar = 1;
@@ -78,7 +78,7 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
       children: [
         Row(
           children: [
-            const MyStyledBodyText("Strength: "),
+            MyStyledBodyText(Assets.strength.tr()),
             SizedBox(width: 2),
 
             ...generateListOfImages(coffeeStrength, Assets.coffeeBeanImg),
@@ -91,13 +91,14 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
         ),
         Row(
           children: [
-            const MyStyledBodyText("Sugars:  "),
+            MyStyledBodyText(Assets.sugars.tr()),
             SizedBox(width: 8),
 
             if (preferredAmountOfSugar == 0)
-              MyStyledBodyText(noSugarSelected)
+              MyStyledBodyText(Assets.noSugarSelected.tr())
             else
-              ...generateListOfImages(preferredAmountOfSugar, Assets.sugarCubeImg),
+              ...generateListOfImages(preferredAmountOfSugar,
+                  Assets.sugarCubeImg),
 
             Expanded(child: SizedBox(width: 50)),
 
@@ -108,11 +109,11 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
         Row(
           children: [
 
-            const MyStyledBodyText("Milk:  "),
+            MyStyledBodyText(Assets.milk.tr()),
             SizedBox(width: 8),
 
             if (!wasMilkPreferred)
-              MyStyledBodyText(noMilkSelected)
+              MyStyledBodyText(Assets.noMilkSelected.tr())
             else
               Image.asset(Assets.milkImg,
               height: 47,
