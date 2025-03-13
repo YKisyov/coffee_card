@@ -13,17 +13,21 @@ class Assets {
   static const String coffeeBeanImg = "assets/img/coffee_bean.png";
   static const String coffeeBgImg = "assets/img/coffee_bg.jpg";
   static const String sugarCubeImg = "assets/img/sugar_cube.png";
+  static const String milkImg = "assets/img/milk_splash.png";
 }
 
 class _CoffeePrefsState extends State<CoffeePrefs> {
-  final minCoffeeStrengthAllowance = 1;
-  final minSugarAllowance = 0;
-  final maxCoffeeStrengthAllowance = 5;
-  final maxSugarAllowance = 5;
+  final int minCoffeeStrengthAllowance = 1;
+  final int minSugarAllowance = 0;
+  final int maxCoffeeStrengthAllowance = 5;
+  final int maxSugarAllowance = 5;
+  static const bool initialMilkSelection = false;
   final String noSugarSelected = "No sugar selected.";
+  final String noMilkSelected = "No Milk selected.";
 
   int coffeeStrength = 1;
   int preferredAmountOfSugar = 1;
+  bool wasMilkPreferred = initialMilkSelection;
 
   void increaseCoffeeStrength() {
     setState(() {
@@ -41,6 +45,13 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
               ? ++preferredAmountOfSugar
               : minSugarAllowance;
     });
+  }
+
+  void changeMilkPreference(){
+    setState(() {
+      wasMilkPreferred = !wasMilkPreferred;
+    });
+
   }
 
   @override
@@ -77,6 +88,24 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
               child: Text("+")),
           ],
         ),
+        Row(
+          children: [
+            const MyStyledBodyText("Milk:  "),
+            SizedBox(width: 8),
+
+            if (wasMilkPreferred)
+              MyStyledBodyText(noMilkSelected)
+            else
+              Image.asset(Assets.milkImg,
+              height: 45,
+              width: 200,),
+
+            Expanded(child: SizedBox(width: 50)),
+
+            MyStyledButton(onPressed: changeMilkPreference,
+                child: Text("+")),
+          ],
+        )
       ],
     );
   }
