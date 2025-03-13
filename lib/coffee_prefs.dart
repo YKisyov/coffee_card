@@ -90,6 +90,7 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
         ),
         Row(
           children: [
+
             const MyStyledBodyText("Milk:  "),
             SizedBox(width: 8),
 
@@ -97,7 +98,7 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
               MyStyledBodyText(noMilkSelected)
             else
               Image.asset(Assets.milkImg,
-              height: 45,
+              height: 47,
               width: 200,),
 
             Expanded(child: SizedBox(width: 50)),
