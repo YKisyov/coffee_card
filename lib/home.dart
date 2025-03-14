@@ -8,12 +8,46 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    EasyLocalization.of(context)!.setLocale(Locale('bg', '')); // Set to Bulgarian locale
+    // EasyLocalization.of(context)!.setLocale(Locale('bg', '')); // Set to Bulgarian locale
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: MyStyledBodyText(Assets.appBarTitle.tr(), color: Colors.white70),
         backgroundColor: Colors.brown[700],
+
+        leading: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+                icon: Image.asset(
+                  Assets.flagBgImg,
+                  width: 35,
+                  height: 35,
+                ),
+                onPressed: () => {
+                  if (context.locale != Locale('bg')) {
+                    EasyLocalization.of(context)!.setLocale(Locale('bg')),
+                  }
+                }
+            ),
+          ],
+        ),
+        actions: [
+          IconButton(
+              icon: Image.asset(
+                Assets.flagUkImg,
+                width: 35,
+                height: 35,
+              ),
+              onPressed: () =>{
+                if (context.locale != Locale('en')) {
+                  EasyLocalization.of(context)!.setLocale(Locale('en')),
+                }
+              }
+          )
+        ],
+
+
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -27,7 +61,7 @@ class Home extends StatelessWidget {
           Container(
             color: Colors.brown[100],
             padding: const EdgeInsets.all(20),
-            child: const CoffeePrefs(),
+            child: CoffeePrefs(),
           ),
           Expanded(
             child: Image.asset(

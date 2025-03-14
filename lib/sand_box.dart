@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class Sandbox extends StatelessWidget {
@@ -12,6 +13,8 @@ class Sandbox extends StatelessWidget {
         centerTitle: true,
         title: const Text("S A N D   B O X"),
         backgroundColor: Colors.amber,
+
+
       ),
       body: Row(
         children: [

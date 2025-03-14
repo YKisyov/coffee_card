@@ -15,6 +15,8 @@ class Assets {
   static const String coffeeBgImg = "assets/img/coffee_bg.jpg";
   static const String sugarCubeImg = "assets/img/sugar_cube.png";
   static const String milkImg = "assets/img/milk_splash.png";
+  static const String flagBgImg = "assets/img/flag_bg.png";
+  static const String flagUkImg = "assets/img/flag_uk.png";
 
   /*
      I will use those as one-stop shop for keeping up in track all the Strings
